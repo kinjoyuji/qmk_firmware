@@ -60,6 +60,11 @@ enum custom_keycodes {
     QWERTY = BMP_SAFE_RANGE, 
     EISU,
     KANA,
+    RGBRST,
+    RGBOFF,
+    RGB1,
+    RGB2,
+    RGB3,
     OPT_TAP_SP,
     DESKTOP,
     MAC,
@@ -73,6 +78,11 @@ const key_string_map_t custom_keys_user =
     .key_strings = "QWERTY\0"
     "EISU\0"
     "KANA\0"
+    "RGBRST\0"
+    "RGBOFF\0"
+    "RGB1\0"
+    "RGB2\0"
+    "RGB3\0"
     "OPT_TAP_SP\0"
     "DESKTOP\0"
     "MAC\0"
@@ -84,31 +94,110 @@ enum layers {
 };
 
 const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_BASE] =   {{
-    KC_A, KC_B, KC_C, KC_D, KC_E, KC_F, KC_G, KC_H, KC_I,
-        KC_J, KC_K, KC_L, KC_M, KC_N, KC_O, KC_P, KC_Q, KC_R, KC_S
-    }},
-  [_OPT] =   {{
-    KC_A, KC_B, KC_C, KC_D, KC_E, KC_F, KC_G, KC_H, KC_I,
-        KC_J, KC_K, KC_L, KC_M, KC_N, KC_O, KC_P, KC_Q, KC_R, KC_S
-    }},
-  [_FUNC] =   {{
-    KC_A, KC_B, KC_C, KC_D, KC_E, KC_F, KC_G, KC_H, KC_I,
-        KC_J, KC_K, KC_L, KC_M, KC_N, KC_O, KC_P, KC_Q, KC_R, KC_S
-    }},
-  [_SYM] =   {{
-    KC_A, KC_B, KC_C, KC_D, KC_E, KC_F, KC_G, KC_H, KC_I,
-        KC_J, KC_K, KC_L, KC_M, KC_N, KC_O, KC_P, KC_Q, KC_R, KC_S
-    }},
-  [_NUM] =   {{
-    KC_A, KC_B, KC_C, KC_D, KC_E, KC_F, KC_G, KC_H, KC_I,
-        KC_J, KC_K, KC_L, KC_M, KC_N, KC_O, KC_P, KC_Q, KC_R, KC_S
-    }},
-
+    /* Base
+   * ,-----------------------------------------.         
+   * |  C+z |   ;  |   [  |   (  |   <  |   {  |         
+   * |------+------+------+------+------+------|         
+   * | KANA |   P  |   K  |   R  |   A  |   F  |         
+   * |------+------+------+------+------+------|         
+   * |  BS  |   D  |   T  |   H  |   E  |   O  |         
+   * |------+------+------+------+------+------+------|
+   * | Shift|   Y  |   S  |   N  |   I  |   U  |Space |
+   * |------+------+------+------+------+------+------|
+   * | Ctrl | Alt  | Gui  | Sym  | Num  | OPT  | Ent  |
+   * `------------------------------------------------'
+   */
+  [_BASE] = LAYOUT( \
+      LCTL(JP_Z),    JP_SCLN,       JP_LBRC,       JP_LPRN,   JP_LT,     JP_LCBR,            \
+      KANA,          JP_P,          JP_K,          JP_R,      JP_A,      JP_F,               \
+      KC_BSPC,       JP_D,          JP_T,          JP_H,      JP_E,      JP_O,               \
+      OSM(MOD_LSFT), JP_Y,          JP_S,          JP_N,      JP_I,      JP_U,       KC_SPC, \
+      OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI), MO(_SYM),  MO(_NUM),  OPT_TAP_SP, KC_ENT  \
+      ),
+  /* Opt
+   * ,-----------------------------------------.       
+   * |  Esc |  :   |  ]   |  )   |  >   |  }   |       
+   * |------+------+------+------+------+------|       
+   * |  EISU|   J  |   M  |   B  |   '  |  Tab |       
+   * |------+------+------+------+------+------|       
+   * |   .  |   V  |   C  |   L  |   Z  |  Q   |       
+   * |------+------+------+------+------+------+------|
+   * |      |   X  |   G  |   W  |   -  |  Del | Esc  |
+   * |------+------+------+------+------+------+------|
+   * |      |      |      |   ,  | DTOP |      |      |
+   * `------------------------------------------------'
+   */
+  [_OPT] = LAYOUT( \
+      KC_ESC,  JP_COLN,JP_RBRC, JP_RPRN,JP_GT,     JP_RCBR,         \
+      EISU,    JP_J,   JP_M,    JP_B,   JP_QUOT,   KC_TAB,          \
+      KC_DOT,  JP_V,   JP_C,    JP_L,   JP_Z,      JP_Q,            \
+      _______, JP_X,   JP_G,    JP_W,   KC_MINUS,  KC_DEL,  KC_ESC, \
+      _______, _______,_______, JP_COMM,DESKTOP,   _______, _______ \
+      ),
+  /* Func
+   * ,-----------------------------------------.       
+   * |RGBRST|  Hue |      |  RST |  Mac |  Win |       
+   * |------+------+------+------+------+------|       
+   * | RGB1 | VAL+ |  F7  |  F8  |  F9  |      |       
+   * |------+------+------+------+------+------|       
+   * | RGB2 | VAL- |  F4  |  F5  |  F6  | F12  |       
+   * |------+------+------+------+------+------+------|
+   * | RGB3 |  F10 |  F1  |  F2  |  F3  | F11  |      |
+   * |------+------+------+------+------+------+------|
+   * |RGBOFF|      |      |      |      |      |      |
+   * `------------------------------------------------'
+   */
+  [_FUNC] = LAYOUT( \
+      RGBRST,RGB_HUI, _______, RESET,   MAC,     WIN,               \
+      RGB1,  RGB_VAI, KC_F7,   KC_F8,   KC_F9,   _______,           \
+      RGB2,  RGB_VAD, KC_F4,   KC_F5,   KC_F6,   KC_F12,            \
+      RGB3,  KC_F10,  KC_F1,   KC_F2,   KC_F3,   KC_F11,   _______, \
+      RGBOFF,_______, _______, _______, _______, _______,  _______  \
+      ),
+  /* Sym
+   * ,-----------------------------------------.       
+   * |  Ins |  GRV |      |  PU  |  PD  |   ^  |       
+   * |------+------+------+------+------+------|       
+   * |      |   \  |   #  |   =  |   ?  |   %  |       
+   * |------+------+------+------+------+------|       
+   * |      |   $  |  upA |   @  |   !  |   |  |       
+   * |------+------+------+------+------+------+------|
+   * |  CL  |  <-  |  dwA |  ->  |   _  |   &  |      |
+   * |------+------+------+------+------+------+------|
+   * |      |      |  PS  |      |   ~  |      |      |
+   * `------------------------------------------------'
+   */
+  [_SYM] = LAYOUT( \
+      KC_INS,  JP_GRV,  _______, KC_PGUP, KC_PGDN, JP_CIRC,         \
+      _______, JP_BSLS, JP_HASH, JP_EQL,  JP_QUES, JP_PERC,         \
+      _______, JP_DLR,  KC_UP,   JP_AT,   JP_EXLM, JP_PIPE,         \
+      JP_CAPS, KC_LEFT, KC_DOWN, KC_RIGHT,JP_UNDS, JP_AMPR, _______,\
+      _______, _______, KC_PSCR, _______, JP_TILD, _______, _______ \
+      ),
+  /* NUM
+   * ,-----------------------------------------.       
+   * |      |      | Func | home |  End |      |       
+   * |------+------+------+------+------+------|       
+   * |      |   *  |  7   |  8   |  9   |  -   |       
+   * |------+------+------+------+------+------|       
+   * |  .   |   /  |  4   |  5   |  6   |  +   |       
+   * |------+------+------+------+------+------+------|
+   * |  LN  |  0   |  1   |  2   |  3   |C+S+F1|      |
+   * |------+------+------+------+------+------+------|
+   * |      |      |      |  ,   |      |      |      |
+   * `------------------------------------------------'
+   */
+  [_NUM] = LAYOUT( \
+      _______,  _______, OSL(_FUNC), KC_HOME, KC_END,  _______,        \
+      _______,  JP_ASTR, KC_P7,      KC_P8,   KC_P9,   JP_MINS,        \
+      KC_PDOT,  JP_SLSH, KC_P4,      KC_P5,   KC_P6,   JP_PLUS,        \
+      KC_NLCK,  KC_P0,   KC_P1,      KC_P2,   KC_P3,   LCTL(S(KC_F1)), _______, \
+      _______,  _______, KC_PDOT,    JP_COMM, _______, _______,        _______ \
+      )
 };
 
 uint32_t keymaps_len() {
-  return 19;
+  return 32;
 }
 // 追加
 
@@ -319,7 +408,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
     // default:
-    //   break;
+    //   // break;
+    //   return false;
   }
 
   return true;
