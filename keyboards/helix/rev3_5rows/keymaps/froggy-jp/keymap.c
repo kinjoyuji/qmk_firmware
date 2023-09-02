@@ -296,6 +296,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case JP_I:
     case JP_U:
     case LCTL(JP_Z):
+    
     case KC_SPC:
       if (record->event.pressed) {
         register_delay_code(_BASE);
@@ -323,10 +324,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           SEND_STRING(" ");
         }
         tap_timer = 0;
-      }
+      }                       iehedDHEDEONNNNSSSSSSSSSSSSSS
       return false;
       break;
-   case EISU:
+    case EISU:
       if (record->event.pressed) {
         if (is_mac_mode()) {
           register_code(KC_LANG2);

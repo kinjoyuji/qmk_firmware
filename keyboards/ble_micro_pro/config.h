@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID      0x0000
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    sekigon-gonnoc
-#define PRODUCT         ble_micro_pro
+#define PRODUCT         ble_micro_pro_froggy
 #define DESCRIPTION     A development board for wireless split keyboards
 
 #define BMP_BOOTPIN_AS_RESET
