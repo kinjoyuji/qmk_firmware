@@ -21,17 +21,20 @@ bool is_mac_mode(void) {
 }
 
 void set_mac_mode(bool macmode) {
-    /* The result is the same as pressing the AG_NORM(=MAGIC_UNSWAP_ALT_GUI)/AG_SWAP(=MAGIC_SWAP_ALT_GUI) keys.
-     * see
-     *   https://github.com/qmk/qmk_firmware/blob/fb4a6ad30ea7a648acd59793ed4a30c3a8d8dc32/quantum/process_keycode/process_magic.c#L123-L124
-     *   https://github.com/qmk/qmk_firmware/blob/fb4a6ad30ea7a648acd59793ed4a30c3a8d8dc32/quantum/process_keycode/process_magic.c#L80-L81
-     */
-    keymap_config.swap_lalt_lgui = keymap_config.swap_ralt_rgui = !macmode;
+    if (macmode) {
+        /* The result is the same as pressing the AG_NORM(=MAGIC_UNSWAP_ALT_GUI) key. */
+        /* https://github.com/qmk/qmk_firmware/blob/fb4a6ad30ea7a648acd59793ed4a30c3a8d8dc32/quantum/process_keycode/process_magic.c#L123-L124 */
+        keymap_config.swap_lalt_lgui = keymap_config.swap_ralt_rgui = false;
+    } else {
+        /* The result is the same as pressing the AG_SWAP(=MAGIC_SWAP_ALT_GUI) key. */
+        /* https://github.com/qmk/qmk_firmware/blob/fb4a6ad30ea7a648acd59793ed4a30c3a8d8dc32/quantum/process_keycode/process_magic.c#L80-L81 */
+        keymap_config.swap_lalt_lgui = keymap_config.swap_ralt_rgui = true;
+    }
     eeconfig_update_keymap(keymap_config.raw);
 }
 
 #ifdef DIP_SWITCH_ENABLE
-bool dip_switch_update_kb(uint8_t index, bool active) {
+void dip_switch_update_kb(uint8_t index, bool active) {
     switch (index) {
     case 0:
         if(active) { // Left no.1  Helix rev3 common
@@ -44,6 +47,5 @@ bool dip_switch_update_kb(uint8_t index, bool active) {
         dip_switch_update_user(index, active);
         break;
     }
-    return true;
 }
 #endif

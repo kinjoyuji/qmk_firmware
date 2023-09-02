@@ -24,6 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0002
 #define MANUFACTURER    Yushakobo
 #define PRODUCT         HelixPico
+#define DESCRIPTION     A split keyboard for the cheap makers
 
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 100
@@ -77,7 +78,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Audio */
 #ifdef AUDIO_ENABLE
-  #define AUDIO_PIN B5
+  #define B5_AUDIO
 #endif
 
 /* ws2812 RGB LED */

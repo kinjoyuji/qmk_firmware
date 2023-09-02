@@ -35,7 +35,7 @@ enum layer_names {
   _ADJUST
 };
 
-#ifdef OLED_ENABLE
+#ifdef OLED_DRIVER_ENABLE
 
 void render_status(void) {
 
