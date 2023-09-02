@@ -63,9 +63,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
 */
-#define MATRIX_ROW_PINS { 33 } // Dummy
-#define MATRIX_COL_PINS {1,2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,22}
-#define MATRIX_LAYOUT {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,255}
+#define MATRIX_ROW_PINS { 7,8,9,10,11 } // Dummy
+#define MATRIX_COL_PINS {20,19,18,17,16,15,14}
+#define MATRIX_LAYOUT { 1,2,3,4,5,6,0, \
+                        8,9,10,11,12,13,0, \
+                        15,16,17,18,19,20,0, \
+                        22,23,24,25,26,27,28,0, \
+                        29,30,31,32,33,34,35}
 
 #define KEYMAP_PRIOR_LOCALE 0
 #define KEYMAP_ASCII 0
