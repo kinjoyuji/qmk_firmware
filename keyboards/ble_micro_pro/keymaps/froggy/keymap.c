@@ -131,7 +131,7 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  JP_COLN,JP_RBRC, JP_RPRN,JP_GT,     JP_RCBR,         \
       EISU,    JP_J,   JP_M,    JP_B,   JP_QUOT,   KC_TAB,          \
       KC_DOT,  JP_V,   JP_C,    JP_L,   JP_Z,      JP_Q,            \
-      _______, JP_X,   JP_G,    JP_W,   KC_MINUS,  KC_DEL,  KC_ESC, \
+      _______, JP_X,   JP_G,    JP_W,   JP_MINS,  KC_DEL,  KC_ESC, \
       _______, _______,_______, JP_COMM,DESKTOP,   _______, _______ \
       ),
   /* Func
@@ -172,7 +172,7 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, JP_BSLS, JP_HASH, JP_EQL,  JP_QUES, JP_PERC,         \
       _______, JP_DLR,  KC_UP,   JP_AT,   JP_EXLM, JP_PIPE,         \
       JP_CAPS, KC_LEFT, KC_DOWN, KC_RIGHT,JP_UNDS, JP_AMPR, _______,\
-      _______, _______, KC_PSCR, _______, JP_TILD, _______, _______ \
+      _______, KC_PSCR, _______,  _______, JP_TILD, _______, _______ \
       ),
   /* NUM
    * ,-----------------------------------------.       
