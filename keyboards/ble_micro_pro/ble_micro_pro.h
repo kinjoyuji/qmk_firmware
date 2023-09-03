@@ -42,3 +42,4 @@ void set_mac_mode(bool macmode);
     { k30, k31, k32, k33, k34, k35, k36 }, \
     { k40, k41, k42, k43, k44, k45, k46 } \
 }
+

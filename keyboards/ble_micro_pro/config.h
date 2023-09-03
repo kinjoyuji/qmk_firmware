@@ -25,8 +25,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID       0x0000
 #define PRODUCT_ID      0x0000
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    sekigon-gonnoc
-#define PRODUCT         ble_micro_pro_froggy
+#define MANUFACTURER    kinpuma34
+#define PRODUCT         helix_froggy_with_ble_micro_pro
 #define DESCRIPTION     A development board for wireless split keyboards
 
 #define BMP_BOOTPIN_AS_RESET
@@ -78,9 +78,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DIODE_DIRECTION COL2ROW
 
 #define RGBLIGHT_SPLIT
-#define G00 255 // Dummy for bin/qmk config generation
+#define G00 1 // Dummy for bin/qmk config generation
 #define RGB_DI_PIN G00
 #ifdef RGB_DI_PIN
+  #define RGBLED_NUM 128
   #define RGBLED_NUM_DEFAULT 128
   #define RGBLIGHT_HUE_STEP 8
   #define RGBLIGHT_SAT_STEP 8
