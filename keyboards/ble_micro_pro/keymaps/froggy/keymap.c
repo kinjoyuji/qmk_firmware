@@ -171,7 +171,7 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_INS,  JP_GRV,  _______, KC_PGUP, KC_PGDN, JP_CIRC,         \
       _______, JP_BSLS, JP_HASH, JP_EQL,  JP_QUES, JP_PERC,         \
       _______, JP_DLR,  KC_UP,   JP_AT,   JP_EXLM, JP_PIPE,         \
-      JP_CAPS, KC_LEFT, KC_DOWN, KC_RIGHT,JP_UNDS, JP_AMPR, _______,\
+      JP_CAPS, KC_LEFT, KC_DOWN, KC_RIGHT,JP_UNDS, JP_AMPR, AD_WO_L,\
       _______, KC_PSCR, _______,  _______, JP_TILD, _______, _______ \
       ),
   /* NUM
@@ -188,7 +188,7 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `------------------------------------------------'
    */
   [_NUM] = LAYOUT( \
-      _______,  _______, OSL(_FUNC), KC_HOME, KC_END,  _______,        \
+      BATT_LV,  _______, OSL(_FUNC), KC_HOME, KC_END,  _______,        \
       _______,  JP_ASTR, KC_P7,      KC_P8,   KC_P9,   JP_MINS,        \
       KC_PDOT,  JP_SLSH, KC_P4,      KC_P5,   KC_P6,   JP_PLUS,        \
       KC_NLCK,  KC_P0,   KC_P1,      KC_P2,   KC_P3,   LCTL(S(KC_F1)), _______, \
