@@ -39,10 +39,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define COMBO_COUNT 32
 
 /* key matrix size */
-#define MATRIX_ROWS_DEFAULT 1
-#define MATRIX_COLS_DEFAULT 19
-#define THIS_DEVICE_ROWS 1
-#define THIS_DEVICE_COLS 19
+#define MATRIX_ROWS_DEFAULT 5
+#define MATRIX_COLS_DEFAULT 7
+#define THIS_DEVICE_ROWS 5
+#define THIS_DEVICE_COLS 7
 #define IS_LEFT_HAND  true
 #define BMP_DEFAULT_MODE SINGLE
 
