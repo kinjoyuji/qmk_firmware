@@ -173,7 +173,7 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_INS,  JP_GRV,  _______, KC_PGUP, KC_PGDN, JP_CIRC,         \
       _______, JP_BSLS, JP_HASH, JP_EQL,  JP_QUES, JP_PERC,         \
       _______, JP_DLR,  KC_UP,   JP_AT,   JP_EXLM, JP_PIPE,         \
-      JP_CAPS, KC_LEFT, KC_DOWN, KC_RIGHT,JP_UNDS, JP_AMPR, AD_WO_L,\
+      S(JP_CAPS), KC_LEFT, KC_DOWN, KC_RIGHT,JP_UNDS, JP_AMPR, _______,\
       _______, KC_PSCR, _______,  _______, JP_TILD, _______, _______ \
       ),
   /* NUM
