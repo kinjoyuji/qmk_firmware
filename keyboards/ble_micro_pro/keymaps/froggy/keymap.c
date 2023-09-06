@@ -468,17 +468,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //     #endif
 // }
 
-// //assign the right code to your layers for OLED display
-// #define L_BASE 0
-// #define L_OPT 2
-// #define L_FUNC 4
-// #define L_SYM 8
-// #define L_NUM 16
-// #define L_FNLAYER 64
-// #define L_NUMLAY 128
-// #define L_NLOWER 136
-// #define L_NFNLAYER 192
-// #define L_MOUSECURSOR 256
+//assign the right code to your layers for OLED display
+#define L_BASE 0
+#define L_OPT 2
+#define L_FUNC 4
+#define L_SYM 8
+#define L_NUM 16
+#define L_FNLAYER 64
+#define L_NUMLAY 128
+#define L_NLOWER 136
+#define L_NFNLAYER 192
+#define L_MOUSECURSOR 256
 
 // // LED Effect
 // #ifdef RGBLIGHT_ENABLE
@@ -537,60 +537,60 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // }
 // #endif
 
-// uint8_t layer_state_old;
+uint8_t layer_state_old;
 
-// //runs every scan cycle (a lot)
-// void matrix_scan_user(void) {
-//   if(delay_key_stat && (timer_elapsed(key_timer) > DELAY_TIME)){
-//     register_delay_code(_BASE);
-//     if(!delay_key_pressing){
-//       unregister_delay_code();
-//     }
-//   }
+//runs every scan cycle (a lot)
+void matrix_scan_user(void) {
+  if(delay_key_stat && (timer_elapsed(key_timer) > DELAY_TIME)){
+    register_delay_code(_BASE);
+    if(!delay_key_pressing){
+      unregister_delay_code();
+    }
+  }
 
-//   if(layer_state_old != layer_state){
-//     switch (layer_state) {
-//       case L_BASE:
-//         break;
-//       case L_OPT:
-//         register_delay_code(_OPT);
-//         unregister_delay_code();
-//         break;
-//       case L_NUM:
-//         register_delay_code(_NUM);
-//         unregister_delay_code();
-//         break;
-//       case L_SYM:
-//         register_delay_code(_SYM);
-//         unregister_delay_code();
-//         break;
-//       case L_FUNC:
-//         register_delay_code(_FUNC);
-//         unregister_delay_code();
-//         break;
-//     }
-//     layer_state_old = layer_state;
-//   }
+  if(layer_state_old != layer_state){
+    switch (layer_state) {
+      case L_BASE:
+        break;
+      case L_OPT:
+        register_delay_code(_OPT);
+        unregister_delay_code();
+        break;
+      case L_NUM:
+        register_delay_code(_NUM);
+        unregister_delay_code();
+        break;
+      case L_SYM:
+        register_delay_code(_SYM);
+        unregister_delay_code();
+        break;
+      case L_FUNC:
+        register_delay_code(_FUNC);
+        unregister_delay_code();
+        break;
+    }
+    layer_state_old = layer_state;
+  }
 
-//   #ifdef RGBLIGHT_ENABLE
-//     if(!RGBAnimation){
-//       switch (layer_state) {
-//         case L_BASE:
-//             led_ripple_effect(0,112,127);
-//           break;
-//         case L_OPT:
-//             led_ripple_effect(127,0,100);
-//           break;
-//         case L_NUM:
-//             led_ripple_effect(127,23,0);
-//           break;
-//         case L_SYM:
-//             led_ripple_effect(0,127,0);
-//           break;
-//         case L_FUNC:
-//             led_ripple_effect(127,0,61);
-//           break;
-//         }
-//     }
-//   #endif
-// }
+  // #ifdef RGBLIGHT_ENABLE
+  //   if(!RGBAnimation){
+  //     switch (layer_state) {
+  //       case L_BASE:
+  //           led_ripple_effect(0,112,127);
+  //         break;
+  //       case L_OPT:
+  //           led_ripple_effect(127,0,100);
+  //         break;
+  //       case L_NUM:
+  //           led_ripple_effect(127,23,0);
+  //         break;
+  //       case L_SYM:
+  //           led_ripple_effect(0,127,0);
+  //         break;
+  //       case L_FUNC:
+  //           led_ripple_effect(127,0,61);
+  //         break;
+  //       }
+  //   }
+  // #endif
+}
