@@ -26,23 +26,18 @@
 #define ONESHOT_TAP_TOGGLE 5 /* Tapping this number of times holds the key until tapped this number of times again. */
 #define ONESHOT_TIMEOUT 5000 /* Time (in ms) before the one shot key is released */
 
-
 // #undef OLED_FONT_H
 // #define OLED_FONT_H "helixfont.h"
 
 // // If you need more program area, try select and reduce rgblight modes to use.
 
-// // Selection of RGBLIGHT MODE to use.
-// #ifdef RGBLIGHT_ENABLE
-//    //#define RGBLIGHT_EFFECT_BREATHING
-//    //#define RGBLIGHT_EFFECT_RAINBOW_MOOD
-//    //#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-//    //#define RGBLIGHT_EFFECT_SNAKE
-//    #define RGBLIGHT_EFFECT_KNIGHT
-//    //#define RGBLIGHT_EFFECT_CHRISTMAS
-//    //#define RGBLIGHT_EFFECT_STATIC_GRADIENT
-//    //#define RGBLIGHT_EFFECT_RGB_TEST
-//    //#define RGBLIGHT_EFFECT_ALTERNATING
-// #endif
+// Selection of RGBLIGHT MODE to use.
+#ifdef RGBLIGHT_ENABLE
+   #define RGBLIGHT_DEFAULT_MODE	RGBLIGHT_MODE_STATIC_LIGHT	//EEPROM のクリア時に使用するデフォルト モード
+   #define RGBLIGHT_DEFAULT_HUE	0 //（赤）	EEPROM のクリア時に使用するデフォルトの色相
+   #define RGBLIGHT_DEFAULT_SAT	(255)	//EEPROM のクリア時に使用するデフォルトの飽和度
+   #define RGBLIGHT_DEFAULT_VAL	RGBLIGHT_LIMIT_VAL//	EEPROM のクリア時に使用するデフォルト値 (明るさ)
+   #define RGBLIGHT_DEFAULT_SPD	0//EEPROM のクリア時に使用するデフォルトの速度
+#endif
 
 #endif /* CONFIG_USER_H */

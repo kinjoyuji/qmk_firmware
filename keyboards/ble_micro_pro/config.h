@@ -77,12 +77,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
-#define RGBLIGHT_SPLIT
+// #define RGBLIGHT_SPLIT
 #define G00 1 // Dummy for bin/qmk config generation
 #define RGB_DI_PIN G00
 #ifdef RGB_DI_PIN
-  #define RGBLED_NUM 128
-  #define RGBLED_NUM_DEFAULT 128
+  #define RGBLED_NUM 6
+  #define RGBLED_NUM_DEFAULT 6
   #define RGBLIGHT_HUE_STEP 8
   #define RGBLIGHT_SAT_STEP 8
   #define RGBLIGHT_VAL_STEP 8
@@ -93,13 +93,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /*== or choose animations ==*/
   #define RGBLIGHT_EFFECT_BREATHING
   #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-  #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-  #define RGBLIGHT_EFFECT_SNAKE
+  #undef RGBLIGHT_EFFECT_RAINBOW_SWIRL
+  #undef RGBLIGHT_EFFECT_SNAKE
   #define RGBLIGHT_EFFECT_KNIGHT
-  #define RGBLIGHT_EFFECT_CHRISTMAS
-  #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-  #define RGBLIGHT_EFFECT_RGB_TEST
-  #define RGBLIGHT_EFFECT_ALTERNATING
+  #undef RGBLIGHT_EFFECT_CHRISTMAS
+  #undef RGBLIGHT_EFFECT_STATIC_GRADIENT
+  #undef RGBLIGHT_EFFECT_RGB_TEST
+  #undef RGBLIGHT_EFFECT_ALTERNATING
 /*== customize breathing effect ==*/
   /*==== (DEFAULT) use fixed table instead of exp() and sin() ====*/
   #define RGBLIGHT_BREATHE_TABLE_SIZE 256      // 256(default) or 128 or 64
